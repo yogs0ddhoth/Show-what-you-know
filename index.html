@@ -9,7 +9,35 @@
 </head> 
 
 <body>
-  <header></header>
-  <main></main>
+  <header>
+    <div></div> <!-- link to scorepage -->
+    <div id = "timer"></div>
+  </header>
+  <main>
+    <section id = "section1">
+      <div>
+        <h1>Take the Quiz!</h1>
+      </div>
+      <button class = "button1">Take the Quiz</button>
+    </section>
+
+    <section id = "section2" hidden = true>
+      <div>
+        <h1 class = "question"></h1>
+      </div>
+      <ol>
+        <li><button class = "choice1"></button></li>
+        <li><button class = "choice2"></button></li>
+        <li><button class = "choice3"></button></li>
+        <li><button class = "choice4"></button></li>
+      </ol>
+      <div class = "result-log">
+        <hr>
+        <p></p>
+      </div>
+    </section>
+
+    <section id = "section3" hidden = true></section>
+  </main>
   <script src="./assets/js/script.js"></script>
 </body>
