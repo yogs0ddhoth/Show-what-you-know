@@ -100,7 +100,7 @@ function checkAnswer(answer) {
   } else {
     console.log("Incorrect");
     result.textContent = "Incorrect"; 
-    // code to take 10 secconds off the timer
+    timeLeft -= 10;
   }
   //render next question in the array
   if (questionIndex < questions.length-1) { 
