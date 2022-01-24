@@ -26,14 +26,14 @@
         <h1 id = "question"></h1>
       </div>
       <ol>
-        <li><button id = "choice1"></button></li>
-        <li><button id = "choice2"></button></li>
-        <li><button id = "choice3"></button></li>
-        <li><button id = "choice4"></button></li>
+        <li><button id = "choice1" onclick="checkAnswer(currentQuestion.choice1)"></button></li>
+        <li><button id = "choice2" onclick="checkAnswer(currentQuestion.choice2)"></button></li>
+        <li><button id = "choice3" onclick="checkAnswer(currentQuestion.choice3)"></button></li>
+        <li><button id = "choice4" onclick="checkAnswer(currentQuestion.choice4)"></button></li>
       </ol>
       <div class = "result-log">
         <hr>
-        <p></p>
+        <p id = "result"></p>
       </div>
     </section>
 
