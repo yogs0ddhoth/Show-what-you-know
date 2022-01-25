@@ -74,8 +74,9 @@ function renderQuestion() {
 // section1 functionality 
 const section1 = document.getElementById("section1");
 const section2 = document.getElementById("section2");
-let timeLeft = 60;
+let timeLeft;
 function startQuiz() {
+  timeLeft = 60;
   console.log("clicked");
   startTimer();
   section1.hidden = true;
@@ -83,11 +84,19 @@ function startQuiz() {
 }
 
 // code to set time limit 
-function startTimer() {
-  setInterval(function(){
+
+
+var startTimer = function() {
+  var quizTimer = setInterval(function(){
     timeLeft--;
     timerEl.textContent = timeLeft;
+    if (timeLeft <= 0) {
+      clearInterval(quizTimer);
+    }
   }, 1000);
+}
+function stopTimer() {
+  clearInterval(quizTimer);
 }
 
 // checks answer -> if (choice == correct)
@@ -109,7 +118,7 @@ function checkAnswer(answer) {
     renderQuestion();
   } else {
     console.log("no more questions")
-    // code to move to the submit form for scoring
+    clearInterval(quizTimer);
   } 
 }
 
