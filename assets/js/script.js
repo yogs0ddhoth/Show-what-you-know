@@ -85,9 +85,9 @@ function startQuiz() {
 
 // code to set time limit 
 
-
+let quizTimer;
 var startTimer = function() {
-  var quizTimer = setInterval(function(){
+  quizTimer = setInterval(function(){
     timeLeft--;
     timerEl.textContent = timeLeft;
     if (timeLeft <= 0) {
@@ -95,6 +95,7 @@ var startTimer = function() {
     }
   }, 1000);
 }
+
 function stopTimer() {
   clearInterval(quizTimer);
 }
@@ -118,7 +119,9 @@ function checkAnswer(answer) {
     renderQuestion();
   } else {
     console.log("no more questions")
-    clearInterval(quizTimer);
+    stopTimer();
+    score = timeLeft;
+    localStorage.setItem("score", score);
   } 
 }
 
