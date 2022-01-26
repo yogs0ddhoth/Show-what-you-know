@@ -1,13 +1,24 @@
+// quiz sections
+const section1 = document.getElementById("section1");
+const section2 = document.getElementById("section2");
+const section3 = document.getElementById("section3");
+
 // start button
 const startButton = document.getElementById("button1");
 
 // timer
 const timerEl = document.getElementById("timer");
+
+// answer results
+const resultEl = document.getElementById("result");
+
+// final score
+const scoreEl = document.getElementById("score");
+
 // track stats 
-let score;
+
 let userInitials;
 
-localStorage.setItem("score", score); //refer to in score page
 localStorage.setItem("userInitials", userInitials);
 
 // quiz 
@@ -26,44 +37,44 @@ const questions = [
     correct: "choice1", // referenced in checkAnswer()
   },
   {
-    question: "question2", // modifies questionElement
-    choice1: "choice1", // modifies choiceButton1
-    choice2: "choice2", // modifies choiceButton2
-    choice3: "choice3", // modifies choiceButton3
-    choice4: "choice4", // modifies choiceButton4
-    correct: "choice2", // referenced in checkAnswer()
+    question: "question2",
+    choice1: "choice1",
+    choice2: "choice2",
+    choice3: "choice3",
+    choice4: "choice4",
+    correct: "choice2",
   },
   {
-    question: "question3", // modifies questionElement
-    choice1: "choice1", // modifies choiceButton1
-    choice2: "choice2", // modifies choiceButton2
-    choice3: "choice3", // modifies choiceButton3
-    choice4: "choice4", // modifies choiceButton4
-    correct: "choice3", // referenced in checkAnswer()
+    question: "question3",
+    choice1: "choice1",
+    choice2: "choice2",
+    choice3: "choice3",
+    choice4: "choice4",
+    correct: "choice3",
   },
   {
-    question: "question4", // modifies questionElement
-    choice1: "choice1", // modifies choiceButton1
-    choice2: "choice2", // modifies choiceButton2
-    choice3: "choice3", // modifies choiceButton3
-    choice4: "choice4", // modifies choiceButton4
-    correct: "choice4", // referenced in checkAnswer()
+    question: "question4",
+    choice1: "choice1",
+    choice2: "choice2",
+    choice3: "choice3",
+    choice4: "choice4",
+    correct: "choice4",
   },
   {
-    question: "question5", // modifies questionElement
-    choice1: "choice1", // modifies choiceButton1
-    choice2: "choice2", // modifies choiceButton2
-    choice3: "choice3", // modifies choiceButton3
-    choice4: "choice4", // modifies choiceButton4
-    correct: "choice1", // referenced in checkAnswer()
+    question: "question5",
+    choice1: "choice1",
+    choice2: "choice2",
+    choice3: "choice3",
+    choice4: "choice4",
+    correct: "choice1",
   }
 ];
-const result = document.getElementById("result");
 
+// render quiz in the html
 let questionIndex = 0; 
 let currentQuestion = questions[questionIndex];
 function renderQuestion() {
-  let currentQuestion = questions[questionIndex]; // why do I have to redeclare this?
+  let currentQuestion = questions[questionIndex];
   questionEl.innerHTML = currentQuestion.question;
   choiceButton1.innerHTML = currentQuestion.choice1;
   choiceButton2.innerHTML = currentQuestion.choice2;
@@ -72,8 +83,6 @@ function renderQuestion() {
 }
 
 // section1 functionality 
-const section1 = document.getElementById("section1");
-const section2 = document.getElementById("section2");
 let timeLeft;
 function startQuiz() {
   timeLeft = 60;
@@ -83,8 +92,7 @@ function startQuiz() {
   section2.hidden = false;
 }
 
-// code to set time limit 
-
+// timer functionality
 let quizTimer;
 var startTimer = function() {
   quizTimer = setInterval(function(){
@@ -95,21 +103,21 @@ var startTimer = function() {
     }
   }, 1000);
 }
-
 function stopTimer() {
   clearInterval(quizTimer);
 }
 
-// checks answer -> if (choice == correct)
+// checks answer 
+let score;
 function checkAnswer(answer) {
-  let currentQuestion = questions[questionIndex]; // see line 68 comment. does this have to do with the expression?
+  currentQuestion = questions[questionIndex];
   console.log("clicked");
   if (answer === currentQuestion.correct) {
     console.log("Correct");
-    result.textContent = "Correct";
+    resultEl.textContent = "Correct";
   } else {
     console.log("Incorrect");
-    result.textContent = "Incorrect"; 
+    resultEl.textContent = "Incorrect"; 
     timeLeft -= 10;
   }
   //render next question in the array
@@ -117,13 +125,18 @@ function checkAnswer(answer) {
     console.log("next question")
     questionIndex++;
     renderQuestion();
-  } else {
+  } else { // log score and proceed to score submission
     console.log("no more questions")
     stopTimer();
     score = timeLeft;
+    scoreEl.textContent = score;
     localStorage.setItem("score", score);
+    section2.hidden = true;
+    section3.hidden = false;
   } 
 }
+
+// submit initials and load scorepage 
 
 renderQuestion();
 // start quiz 
