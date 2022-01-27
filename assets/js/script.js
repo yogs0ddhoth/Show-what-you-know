@@ -30,7 +30,7 @@ const choiceButton4 = document.getElementById("choice4");
 const questions = [
   {
     question: "question1", // modifies questionElement
-    choice1: "choice1", // modifies choiceButton1
+    choice1: "right answer", // modifies choiceButton1
     choice2: "choice2", // modifies choiceButton2
     choice3: "choice3", // modifies choiceButton3
     choice4: "choice4", // modifies choiceButton4
@@ -39,7 +39,7 @@ const questions = [
   {
     question: "question2",
     choice1: "choice1",
-    choice2: "choice2",
+    choice2: "right answer",
     choice3: "choice3",
     choice4: "choice4",
     correct: "choice2",
@@ -48,7 +48,7 @@ const questions = [
     question: "question3",
     choice1: "choice1",
     choice2: "choice2",
-    choice3: "choice3",
+    choice3: "correctChoice",
     choice4: "choice4",
     correct: "choice3",
   },
@@ -57,12 +57,12 @@ const questions = [
     choice1: "choice1",
     choice2: "choice2",
     choice3: "choice3",
-    choice4: "choice4",
+    choice4: "correctChoice",
     correct: "choice4",
   },
   {
     question: "question5",
-    choice1: "choice1",
+    choice1: "correctChoice",
     choice2: "choice2",
     choice3: "choice3",
     choice4: "choice4",
@@ -87,7 +87,7 @@ let timeLeft;
 function startQuiz() {
   timeLeft = 60;
   console.log("clicked");
-  startTimer();
+  // startTimer();
   section1.hidden = true;
   section2.hidden = false;
 }
