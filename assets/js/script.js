@@ -142,8 +142,6 @@ function saveScore () {
 function loadScorePage(event) {
   saveScore();
   event.preventDefault();
-  // userInitials = document.getElementById("initials");
-  // saveScore();
   window.location.href = "score-page.html";
 }
 
