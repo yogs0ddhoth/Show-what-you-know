@@ -1,13 +1,17 @@
 # Show what you know!
 
-## correct answers:
+ https://yogs0ddhoth.github.io/Show-what-you-know/
 
-Question1: choice1
+## Preview:
 
-Question2: choice2
-
-Question3: choice3
-
-Question4: choice4
+A functional quiz architecture with a time limit and high score log
  
 ![screenshot](./assets/images/Screenshot.png)
+
+Quiz algorithm is console logged
+![screenshot](./assets/images/consolelog.png)
+
+## Coming Updates: 
+
+* A Javascript Quiz 
+* Full styling
