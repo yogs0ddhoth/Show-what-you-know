@@ -15,12 +15,6 @@ const resultEl = document.getElementById("result");
 // final score
 const scoreEl = document.getElementById("score");
 
-// track stats 
-
-let userInitials = document.getElementById("initials");
-
-localStorage.setItem("userInitials", userInitials);
-
 // quiz 
 const questionEl = document.getElementById("question")
 const choiceButton1 = document.getElementById("choice1");
@@ -87,7 +81,7 @@ let timeLeft;
 function startQuiz() {
   timeLeft = 60;
   console.log("clicked");
-  // startTimer();
+  startTimer();
   section1.hidden = true;
   section2.hidden = false;
 }
