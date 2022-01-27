@@ -10,8 +10,16 @@
 
 <body>
   <header>
-    <!-- replace this with a button link -->
-    <a href="index.html">View Highscores</a> 
+    <h1>High Scores:</h1>
   </header>
-  <script src="./assets/js/script.js"></script>
+  <main>
+    <div>
+      <ol>
+        <li id="scores"></li>
+      </ol>
+    </div>
+    <button onclick="clearScores(event)">Clear Highscores</button>
+    <button><a href="index.html">Back</a></button>
+  </main>
+  <script src="./assets/js/score-page-script.js"></script>
 </body>

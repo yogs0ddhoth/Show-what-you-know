@@ -17,7 +17,7 @@ const scoreEl = document.getElementById("score");
 
 // track stats 
 
-let userInitials;
+let userInitials = document.getElementById("initials");
 
 localStorage.setItem("userInitials", userInitials);
 
@@ -108,7 +108,7 @@ function stopTimer() {
 }
 
 // checks answer 
-let score;
+let userScore;
 function checkAnswer(answer) {
   currentQuestion = questions[questionIndex];
   console.log("clicked");
@@ -128,15 +128,34 @@ function checkAnswer(answer) {
   } else { // log score and proceed to score submission
     console.log("no more questions")
     stopTimer();
-    score = timeLeft;
-    scoreEl.textContent = score;
-    localStorage.setItem("score", score);
+    userScore = timeLeft;
+    scoreEl.textContent = userScore;
     section2.hidden = true;
     section3.hidden = false;
   } 
 }
 
-// submit initials and load scorepage 
+// submit initials and load scorepage
+let loggedScore;
+function saveScore () {
+  loggedScore = {
+    score: userScore,
+    initials: document.getElementById("initials").value,
+  }
+  localStorage.setItem("loggedScore", JSON.stringify(loggedScore));
+}
+
+function loadScorePage(event) {
+  saveScore();
+  event.preventDefault();
+  // userInitials = document.getElementById("initials");
+  // saveScore();
+  window.location.href = "score-page.html";
+}
+
+function loadMainPage() {
+  window.location.href = 'index.html';
+}
 
 renderQuestion();
 // start quiz 
