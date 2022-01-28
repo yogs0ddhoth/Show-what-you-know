@@ -23,44 +23,44 @@ const choiceButton3 = document.getElementById("choice3");
 const choiceButton4 = document.getElementById("choice4");
 const questions = [
   {
-    question: "question1", // modifies questionElement
-    choice1: "right answer", // modifies choiceButton1
-    choice2: "choice2", // modifies choiceButton2
-    choice3: "choice3", // modifies choiceButton3
-    choice4: "choice4", // modifies choiceButton4
-    correct: "choice1", // referenced in checkAnswer()
+    question: "Commonly used data types DO NOT include:", // modifies questionElement
+    choice1: "strings", // modifies choiceButton1
+    choice2: "booleans", // modifies choiceButton2
+    choice3: "alerts", // modifies choiceButton3
+    choice4: "numbers", // modifies choiceButton4
+    correct: "choice3", // referenced in checkAnswer()
   },
   {
-    question: "question2",
-    choice1: "choice1",
-    choice2: "right answer",
-    choice3: "choice3",
-    choice4: "choice4",
-    correct: "choice2",
-  },
-  {
-    question: "question3",
-    choice1: "choice1",
-    choice2: "choice2",
-    choice3: "correctChoice",
-    choice4: "choice4",
+    question: "The condition in an if/else statement is enclosed within _____",
+    choice1: "quotes",
+    choice2: "curly brackets",
+    choice3: "parentheses",
+    choice4: "square brackets",
     correct: "choice3",
   },
   {
-    question: "question4",
-    choice1: "choice1",
-    choice2: "choice2",
-    choice3: "choice3",
-    choice4: "correctChoice",
+    question: "Arrays in JavaScript can be used to store _____",
+    choice1: "numbers and strings",
+    choice2: "other arrays",
+    choice3: "booleans",
+    choice4: "all of the above",
     correct: "choice4",
   },
   {
-    question: "question5",
-    choice1: "correctChoice",
-    choice2: "choice2",
-    choice3: "choice3",
-    choice4: "choice4",
-    correct: "choice1",
+    question: "String values must be enclosed within _____ when being assigned to variables",
+    choice1: "commas",
+    choice2: "curly brackets",
+    choice3: "quotes",
+    choice4: "parentheses",
+    correct: "choice3",
+  },
+  {
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    choice1: "Javascript",
+    choice2: "terminal/bash",
+    choice3: "for loops",
+    choice4: "console.log",
+    correct: "choice4",
   }
 ];
 
@@ -88,20 +88,21 @@ function startQuiz() {
 
 // timer functionality
 let quizTimer;
-var startTimer = function() {
+function startTimer() {
   quizTimer = setInterval(function(){
     timeLeft--;
     timerEl.textContent = timeLeft;
     if (timeLeft <= 0) {
-      clearInterval(quizTimer);
+      stopTimer();
     }
   }, 1000);
 }
+// stop the timer
 function stopTimer() {
   clearInterval(quizTimer);
 }
 
-// checks answer 
+// check answer 
 let userScore;
 function checkAnswer(answer) {
   currentQuestion = questions[questionIndex];
@@ -114,39 +115,52 @@ function checkAnswer(answer) {
     resultEl.textContent = "Incorrect"; 
     timeLeft -= 10;
   }
-  //render next question in the array
+  nextQuestion();
+}
+//render next question or finish quiz
+function nextQuestion() {
   if (questionIndex < questions.length-1) { 
     console.log("next question")
     questionIndex++;
     renderQuestion();
-  } else { // log score and proceed to score submission
+  } else { // stop timer, log score, and proceed to score submission
     console.log("no more questions")
-    stopTimer();
     userScore = timeLeft;
     scoreEl.textContent = userScore;
+    stopTimer();
+    timerEl.parentElement.hidden = true;
     section2.hidden = true;
     section3.hidden = false;
   } 
 }
 
-// submit initials and load scorepage
-let loggedScore;
+// submit initials and save score
+let savedScore;
+let loggedScore = [];
 function saveScore () {
-  loggedScore = {
+  savedScore = {
     score: userScore,
     initials: document.getElementById("initials").value,
+  } 
+  loggedScore.push(savedScore);
+  logScore();
+}
+// allows multiple scores to be saved in localStorage
+function logScore() {
+  let pulledScores = JSON.parse(localStorage.getItem("loggedScore"));
+  if (pulledScores == null) {
+    localStorage.setItem("loggedScore", JSON.stringify(loggedScore));
+  } else {
+    let newLoggedScore = pulledScores.concat(loggedScore);
+    localStorage.setItem("loggedScore", JSON.stringify(newLoggedScore));
   }
-  localStorage.setItem("loggedScore", JSON.stringify(loggedScore));
 }
 
+// load score page
 function loadScorePage(event) {
   saveScore();
   event.preventDefault();
   window.location.href = "score-page.html";
-}
-
-function loadMainPage() {
-  window.location.href = 'index.html';
 }
 
 renderQuestion();
