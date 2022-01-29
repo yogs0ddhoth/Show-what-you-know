@@ -9,15 +9,15 @@
 </head> 
 
 <body>
-  <header>
-    <h1>Highscores:</h1>
+  <header id="header2">
+    <h1>Highcores:</h1>
   </header>
   <main>
     <div>
       <ol id="scores"></ol>
+      <button onclick="clearScores(event)">Clear Highscores</button>
+      <button onclick="loadMainPage(event)">Back</button>
     </div>
-    <button onclick="clearScores(event)">Clear Highscores</button>
-    <button onclick="loadMainPage(event)">Back</button>
   </main>
   <script src="./assets/js/score-page-script.js"></script>
 </body>

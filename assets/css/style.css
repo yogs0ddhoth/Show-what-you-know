@@ -1,0 +1,63 @@
+:root {
+  --dark: rgb(29, 28, 28);
+  --black: black;
+  --light: rgb(241, 241, 241);
+  --offdark: rgb(30, 30, 30, .7);
+}
+
+body {
+  background-color: var(--dark);
+  max-width: 100%;
+  font-family: sans-serif;
+}
+
+header {
+  background-color: var(--black);
+  opacity: .85;
+  color: var(--light);
+}
+
+header a {
+  /* background-color: var(--black); */
+  color: var(--light);
+  display: inline;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-left: 1rem;
+}
+
+header div {
+  /* background-color: var(--black); */
+  color: var(--light);
+  display: inline;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding-right: 1rem;
+
+}
+
+main, #header2 {
+  display: flex;
+  justify-content: center;
+}
+
+#section1, #section2, #section3, #section4 {
+  width: 75%;
+  color: var(--light);
+  align-content: center;
+}
+
+#section1 {
+  text-align: center;
+}
+
+button {
+  background-color: var(--offdark);
+  color: var(--light);
+}
+
+#scores {
+  color: var(--light);
+}

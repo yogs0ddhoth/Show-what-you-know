@@ -6,6 +6,9 @@ const section3 = document.getElementById("section3");
 // start button
 const startButton = document.getElementById("button1");
 
+// header element --> timer and link to score-page are children
+const headerEl = document.querySelector("header");
+
 // timer
 const timerEl = document.getElementById("timer");
 
@@ -31,7 +34,7 @@ const questions = [
     correct: "choice3", // referenced in checkAnswer()
   },
   {
-    question: "The condition in an if/else statement is enclosed within _____",
+    question: 'The condition in an if/else statement is enclosed within "_____"',
     choice1: "quotes",
     choice2: "curly brackets",
     choice3: "parentheses",
@@ -39,7 +42,7 @@ const questions = [
     correct: "choice3",
   },
   {
-    question: "Arrays in JavaScript can be used to store _____",
+    question: 'Arrays in JavaScript can be used to store "_____"',
     choice1: "numbers and strings",
     choice2: "other arrays",
     choice3: "booleans",
@@ -47,7 +50,7 @@ const questions = [
     correct: "choice4",
   },
   {
-    question: "String values must be enclosed within _____ when being assigned to variables",
+    question: 'String values must be enclosed within "_____" when being assigned to variables',
     choice1: "commas",
     choice2: "curly brackets",
     choice3: "quotes",
@@ -128,7 +131,7 @@ function nextQuestion() {
     userScore = timeLeft;
     scoreEl.textContent = userScore;
     stopTimer();
-    timerEl.parentElement.hidden = true;
+    headerEl.hidden = true;
     section2.hidden = true;
     section3.hidden = false;
   } 
