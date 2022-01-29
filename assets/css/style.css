@@ -18,7 +18,6 @@ header {
 }
 
 header a {
-  /* background-color: var(--black); */
   color: var(--light);
   display: inline;
   position: fixed;
@@ -28,7 +27,6 @@ header a {
 }
 
 header div {
-  /* background-color: var(--black); */
   color: var(--light);
   display: inline;
   position: fixed;
