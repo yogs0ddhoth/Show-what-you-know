@@ -140,7 +140,7 @@ function nextQuestion() {
   if (questionIndex < questions.length-1) { 
     console.log("next question")
     questionIndex++;
-    renderQuestion();
+    renderQuestion(currentQuestion);
   } else { // stop timer, log score, and proceed to score submission
     console.log("no more questions")
     userScore = timeLeft;
